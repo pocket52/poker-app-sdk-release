@@ -11,7 +11,7 @@ This SDK requires a user auth key to run.
    Initialization of the SDK is necessary to use any functionality.
    
    ```java
-     P52Poker.init(token);
+     P52Poker.init(getApplicationContext(), token);
    ```
 
 ## Opening PokerRoomsActivity
@@ -37,18 +37,19 @@ This SDK requires a user auth key to run.
 */
 public class P52Poker { 
 
-     /**
-     * Initializes Pocket52 Poker SDK. 
+      /**
+     * Initializes Pocket52 Poker SDK.
      * Call this method as early as possible, preferably in your Main Application class.
-     * 
+     *
      * Initialization of the SDK is necessary to leverage any other functionality in the SDK.
      *
      *
-     * @param p52AuthToken authToken provided by Pocket52 Game Server 
+     * @param context The Application Context.
+     * @param p52AuthToken authToken provided by Pocket52 Game Server
      * {@note The authToken is refreshed internally, at a specified rate and cannot be configured at runtime.}
      *
      */
-     public void init(String p52AuthToken);
+    public void init(Context context, String p52AuthToken)
 
 }
 ```
