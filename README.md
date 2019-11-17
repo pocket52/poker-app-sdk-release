@@ -10,9 +10,9 @@ This SDK requires a user auth key to run.
    Initialize the SDK by user's authToken.   
    Initialization of the SDK is necessary to use any functionality.
    
-     ```java
+   ```java
      P52Poker.init(token);
-     ```
+   ```
 
 ## Opening PokerRoomsActivity
    This activity contains Poker Rooms.
