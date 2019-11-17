@@ -4,7 +4,7 @@ This Document contains POCKET 52’s POKER SDK’s Documentation.
 
 ### Setup
 
-This SDK requires a user auth key to be run.
+This SDK requires a user auth key to run.
 
 ## Initialization
    Initialize the SDK by user's authToken.   
