@@ -19,7 +19,7 @@ This SDK requires a user auth key to run.
    
    Launch this activity in SINGLE_TASK Mode
    ```java
-     Intent intent = new Intent(getApplicationContext(),A.class);
+     Intent intent = new Intent(getApplicationContext(), PokerRoomsActivity.class);
      intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
      startActivity(intent);       
    ```
