@@ -6,6 +6,8 @@ This Document contains POCKET 52’s POKER SDK’s Documentation.
 
 This SDK requires a user auth key to run.
 
+Import the .aar file into your android project using.. File-->New Module-->Aar project
+
 ## Initialization
    Initialize the SDK by user's authToken.   
    Initialization of the SDK is necessary to use any functionality.
