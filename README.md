@@ -7,6 +7,62 @@ This Document contains POCKET 52’s POKER SDK’s Documentation.
 This SDK requires a user auth key to run.
 
 Import the .aar file into your android project using.. File-->New Module-->Aar project
+Import the .jar file into your android project inside libs folder.
+
+
+## Dependencies
+
+Include the following dependencies in your main app build.gradle file.
+
+```java
+    implementation "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
+    natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
+    natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
+    natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-arm64-v8a"
+    natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86"
+    natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86_64"
+
+    implementation "com.badlogicgames.gdx:gdx:$gdxVersion"
+    implementation "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+
+    implementation "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+    natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-armeabi"
+    natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-armeabi-v7a"
+    natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-arm64-v8a"
+    natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86"
+    natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86_64"
+
+    implementation ('com.android.support:appcompat-v7:28.0.0') {
+        force true
+    }
+
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+
+    implementation 'com.jakewharton.rxrelay2:rxrelay:2.1.0'
+
+    implementation "io.reactivex.rxjava2:rxandroid:$rxandroidVersion"
+    implementation "io.reactivex.rxjava2:rxjava:$rxjavaVersion"
+
+    implementation "com.amitshekhar.android:android-networking:$androidNetworkingLibVersion"
+    implementation "com.amitshekhar.android:rx2-android-networking:$androidNetworkingLibVersion"
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    implementation("com.android.support:recyclerview-v7:$supportLibVersion") {
+        force true
+    }
+    implementation 'com.android.volley:volley:1.1.0'
+
+    implementation('io.socket:socket.io-client:0.8.3') {
+        // excluding org.json which is provided by Android
+        exclude group: 'org.json', module: 'json'
+    }
+    annotationProcessor 'com.bluelinelabs:logansquare-compiler:1.3.6'
+    implementation 'com.bluelinelabs:logansquare:1.3.6'
+    implementation ("com.android.support:design:$supportLibVersion")
+    implementation 'com.facebook.shimmer:shimmer:0.3.0'
+    implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:2.1.2'
+    implementation 'io.branch.sdk.android:library:3.+'
+   ```
 
 ## Initialization
    Initialize the SDK by user's authToken.   
