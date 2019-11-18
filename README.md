@@ -36,6 +36,9 @@ ext {
 Include the following dependencies in your main app build.gradle file.
 
 ```java
+    configurations { natives }
+
+    dependencies {
     implementation "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
     natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
     natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
@@ -83,6 +86,7 @@ Include the following dependencies in your main app build.gradle file.
     implementation 'com.facebook.shimmer:shimmer:0.3.0'
     implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:2.1.2'
     implementation 'io.branch.sdk.android:library:3.+'
+    }
    ```
 
 ## Initialization
