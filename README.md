@@ -89,6 +89,76 @@ Include the following dependencies in your main app build.gradle file.
     }
    ```
 
+## Proguard Rules 
+
+```java
+    #region LibGDX rules
+    -verbose
+
+    -dontwarn android.support.**
+    -dontwarn com.badlogic.gdx.backends.android.AndroidFragmentApplication
+    -dontwarn com.badlogic.gdx.utils.GdxBuild
+    -dontwarn com.badlogic.gdx.physics.box2d.utils.Box2DBuild
+    -dontwarn com.badlogic.gdx.jnigen.BuildTarget*
+    -dontwarn com.badlogic.gdx.graphics.g2d.freetype.FreetypeBuild
+
+    -keep class com.badlogic.gdx.controllers.android.AndroidControllers
+    -keep class com.badlogic.gdx.backends.android.AndroidApplication
+    -keep class com.badlogic.gdx.backends.android.AndroidApplicationConfiguration
+    -keep class com.pocket52.application.P52Poker
+    -keep class com.pocket52.helper.NumberFormatter
+
+
+    -keepclassmembers class com.pocket52.application.P52Poker {
+       void    init(android.content.Context, java.lang.String);
+       void    openPokerRooms();
+    }
+
+    -keepnames class com.badlogic.gdx.backends.android.AndroidInput*
+    -keepclassmembers class com.badlogic.gdx.backends.android.AndroidInput* {
+       <init>(com.badlogic.gdx.Application, android.content.Context, java.lang.Object, com.badlogic.gdx.backends.android.AndroidApplicationConfiguration);
+    }
+
+    -keepclassmembers class com.badlogic.gdx.physics.box2d.World {
+       boolean contactFilter(long, long);
+       void    beginContact(long);
+       void    endContact(long);
+       void    preSolve(long, long);
+       void    postSolve(long, long);
+       boolean reportFixture(long);
+       float   reportRayFixture(long, float, float, float, float, float);
+    }
+    #endregion
+
+    #region okHttp rules (used by picasso)
+    # JSR 305 annotations are for embedding nullability information.
+    -dontwarn javax.annotation.**
+
+    # A resource is loaded with a relative path so the package of this class must be preserved.
+    -keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
+
+    # Animal Sniffer compileOnly dependency to ensure APIs are compatible with older versions of Java.
+    -dontwarn org.codehaus.mojo.animal_sniffer.*
+
+    # OkHttp platform used only on JVM and when Conscrypt dependency is available.
+    -dontwarn okhttp3.internal.platform.ConscryptPlatform
+    #endregion
+
+    #region LoganSquare
+    -keep class com.bluelinelabs.logansquare.** { *; }
+    -keep @com.bluelinelabs.logansquare.annotation.JsonObject class *
+    -keep class **$$JsonObjectMapper { *; }
+    #endregion
+
+    #region Branch
+    -dontwarn com.android.installreferrer.api.**
+    -dontwarn com.crashlytics.android.answers.shim.**
+    -dontwarn com.google.firebase.appindexing.**
+    #endregion
+
+```
+
+
 ## Initialization
    Initialize the SDK by user's authToken.   
    Initialization of the SDK is necessary to use any functionality.
