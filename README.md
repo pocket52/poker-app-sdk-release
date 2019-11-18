@@ -12,6 +12,27 @@ Import the .jar file into your android project inside libs folder.
 
 ## Dependencies
 
+For reference you can use the following ext:
+
+
+```java
+ext {
+    appName = "Pocket52"
+    gdxVersion = '1.9.8'
+    roboVMVersion = '2.3.3'
+    box2DLightsVersion = '1.4'
+    ashleyVersion = '1.7.0'
+    aiVersion = '1.8.0'
+    butterknifeVersion = '8.4.0'
+    daggerVersion = '2.13'
+    rxandroidVersion = '2.0.1'
+    rxjavaVersion = '2.1.8'
+    androidNetworkingLibVersion = '1.0.2'
+    crashreporterVersion = '1.0.9'
+    supportLibVersion = '28.0.0'
+}
+```
+
 Include the following dependencies in your main app build.gradle file.
 
 ```java
