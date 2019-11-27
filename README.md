@@ -107,6 +107,7 @@ Include the following dependencies in your main app build.gradle file.
 
     -keepclassmembers class com.pocket52.application.P52Poker {
        void    init(android.content.Context, java.lang.String);
+       com.pocket52.application.P52Poker    get();
        void    openPokerRooms();
     }
 
