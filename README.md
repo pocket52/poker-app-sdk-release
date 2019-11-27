@@ -4,11 +4,7 @@ This Document contains POCKET 52’s POKER SDK’s Documentation.
 
 ### Setup
 
-This SDK requires a user auth key to run.
-
-Import the .aar file into your android project using.. File-->New Module-->Aar project
-Import the .jar file into your android project inside libs folder.
-
+Import the .aar file into your android project using.. File-->New Module-->Aar project 
 
 ## Dependencies
 
@@ -172,7 +168,7 @@ Include the following dependencies in your main app build.gradle file.
    
    Launch this activity in SINGLE_TASK Mode
    ```java
-     Intent intent = new Intent(getApplicationContext(), PokerRoomsActivity.class);
+     Intent intent = new Intent(getApplicationContext(), MPLPokerRoomsActivity.class);
      intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
      startActivity(intent);       
    ```
