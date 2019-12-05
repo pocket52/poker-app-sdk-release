@@ -184,6 +184,7 @@ This will close Poker Rooms Activity, Game View Activity and call disposeToken()
 ### P52Poker
 
  ```java
+ 
 /**
 * Pocket52 Poker SDK Main Class.
 * {@note This is a singleton class which is based on Bill Pugh Singleton Implementation.
@@ -199,30 +200,25 @@ public class P52Poker {
      *
      * Initialization of the SDK is necessary to leverage any other functionality in the SDK.
      *
-     *
-     * @param context The Application Context.
-     * @param p52AuthToken authToken provided by Pocket52 Game Server
-     * {@note The authToken is refreshed internally, at a specified rate and cannot be configured at runtime.}
-     *
      */
-    public void init(Config config) throws Exception
+    public void init(Config config);
 
     /**
      * Opens Poker Rooms Activity in a NEW TASK
      */
-    public void openPokerRooms()
+    public void openPokerRooms();
     
     /**
      * Closes Poker Rooms Activity, Games View Activity and calls disposeToken()
      */
-    public void closePokerRooms()
+    public void closePokerRooms();
     
     /**
      * Dispose P52 User Auth Token
      */
-    public void disposeToken()
+    public void disposeToken();
 }
-```
+  ```
 
 ### Config
 
