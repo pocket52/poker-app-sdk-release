@@ -173,7 +173,7 @@ ext {
    Initialization of the SDK is necessary to use any functionality.
    
    ```java
-     P52Poker.init(config);
+     P52Poker.get().init(config);
    ```
 
 ## Opening PokerRooms
