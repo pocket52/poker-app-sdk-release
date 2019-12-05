@@ -2,6 +2,8 @@
 
 This Document contains POCKET 52’s POKER SDK’s Documentation.
 
+Please go to [Releases](https://github.com/pocket52/poker-app-sdk-release/releases) to be updated with the latest version.
+
 ### Setup
 
 Import the .aar file into your android project using.. File-->New Module-->Aar project 
