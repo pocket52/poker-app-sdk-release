@@ -317,6 +317,25 @@ public class Config {
 
 ```
 
+### Errors
+
+Following errors are passed through onError callback of IPokerListener.java
+
+ ```java
+
+public enum ERROR {
+    INSUFFICIENT_BALANCE,
+    INVALID_TOKEN,
+    INVALID_APPLICATION_CONTEXT,
+    INVALID_MODE,
+    LOGGED_OUT,
+    IDLE_LOBBY,
+    EXIT_LOBBY,
+    LOBBY_DESTROYED
+}
+
+```
+
 
 
 
