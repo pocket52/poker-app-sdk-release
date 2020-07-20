@@ -255,6 +255,8 @@ public class P52Poker {
  */
 public class Config {
 
+    private String assetsDirectoryName;
+
     /**
      * Application Context
      */
@@ -271,15 +273,58 @@ public class Config {
     private MODE mode = MODE.TEST;
 
     /**
+     * FTUE Url
+     */
+    private String ftueUrl;
+
+
+    /**
      * SDK Events Listener
      */
     private IPokerListener pokerListener;
 
-    public Config(Context context, String authToken, MODE mode, IPokerListener pokerListener) {
+    /**
+     * Private Table Information
+     * This is for deep links, which helps to join the Private Table.
+     * Optional
+     */
+    private PrivateTableInfo privateTableInfo;
+
+
+    /**
+     * @param context (Mandatory) Application Context
+     * @param authToken (Mandatory)
+     * @param mode (Mandatory) Mode to run on TEST/PROD servers
+     * @param ftueUrl (Optional/Mandatory) Mandatory if we need to show FTUE from SDK
+     * @param assetsDirectoryName (Mandatory)
+     * @param pokerListener (Mandatory) to listen about Poker Activity
+     */
+    public Config(Context context, String authToken, MODE mode, String ftueUrl, String assetsDirectoryName, IPokerListener pokerListener) {
         this.context = context;
         this.authToken = authToken;
         this.mode = mode;
+        this.ftueUrl = ftueUrl;
         this.pokerListener = pokerListener;
+        this.assetsDirectoryName = assetsDirectoryName;
+    }
+
+    /**
+     * @param context (Mandatory) Application Context
+     * @param authToken (Mandatory)
+     * @param mode (Mandatory) Mode to run on TEST/PROD servers
+     * @param ftueUrl (Optional/Mandatory) Mandatory if we need to show FTUE from SDK
+     * @param assetsDirectoryName (Mandatory)
+     * @param pokerListener (Mandatory) to listen about Poker Activity
+     * @param privateTableInfo (Optional/Mandatory) pass the private table Info to join the table
+     */
+    public Config(Context context, String authToken, MODE mode, String ftueUrl, String assetsDirectoryName, IPokerListener pokerListener, PrivateTableInfo privateTableInfo) {
+        this.context = context;
+        this.authToken = authToken;
+        this.mode = mode;
+        this.ftueUrl = ftueUrl;
+        this.pokerListener = pokerListener;
+        this.assetsDirectoryName = assetsDirectoryName;
+        this.privateTableInfo = privateTableInfo;
     }
 
     public Config (Config config) {
@@ -287,6 +332,9 @@ public class Config {
         this.authToken = config.authToken;
         this.mode = config.mode;
         this.pokerListener = config.pokerListener;
+        this.ftueUrl = config.ftueUrl;
+        this.assetsDirectoryName = config.assetsDirectoryName;
+        this.privateTableInfo = config.privateTableInfo;
     }
 
     public Context getContext() {
@@ -317,12 +365,94 @@ public class Config {
         return pokerListener;
     }
 
+    public String getFtueUrl() {
+        return ftueUrl;
+    }
+
+    public void setFtueUrl(String ftueUrl) {
+        this.ftueUrl = ftueUrl;
+    }
+
     public void setPokerListener(IPokerListener pokerListener) {
         this.pokerListener = pokerListener;
+    }
+
+    public String getAssetsDirectoryName() {
+        return assetsDirectoryName;
+    }
+
+    public void setAssetsDirectoryName(String assetsDirectoryName) {
+        this.assetsDirectoryName = assetsDirectoryName;
+    }
+
+    public PrivateTableInfo getPrivateTableInfo() {
+        return privateTableInfo;
+    }
+
+    public void setPrivateTableInfo(PrivateTableInfo privateTableInfo) {
+        this.privateTableInfo = privateTableInfo;
     }
 }
 
 ```
+
+### PrivateTableInfo
+
+ ```java
+
+/**
+ * {@code P52Poker SDK Config class, used for initialization}
+ *
+ * @author Name:    Nikhil Rai,
+ * Company: Nirdesa Networks Pvt Ltd,
+ * @version 1.0
+ * @since 04, December, 2019
+ */
+public class PrivateTableInfo {
+    private String privateTablePin;
+    private String pvtOwnerId;
+    private String pvtExpiryDate;
+
+    /**
+     * @param privateTablePin is a pin which helps player to join the Private Table.
+     */
+    public PrivateTableInfo(String privateTablePin) {
+        this(privateTablePin, null, null);
+    }
+
+    /**
+     * @param privateTablePin is a pin which helps player to join the Private Table.
+     * @param privateTableOwnerName Name or ID of player, who generated private Table.
+     */
+    public PrivateTableInfo(String privateTablePin, String privateTableOwnerName) {
+        this(privateTablePin, privateTableOwnerName, null);
+    }
+
+    /**
+     * @param privateTablePin is a pin which helps player to join the Private Table.
+     * @param privateTableOwnerName Optional : Name or ID of player, who generated private Table.
+     * @param privateTableExpiryDate Optional : pass expiry date if we need to show on UI.
+     */
+    public PrivateTableInfo(String privateTablePin, String privateTableOwnerName, String privateTableExpiryDate) {
+        this.privateTablePin = privateTablePin;
+        this.pvtOwnerId = privateTableOwnerName;
+        this.pvtExpiryDate = privateTableExpiryDate;
+    }
+
+    public String getPrivateTablePin() {
+        return privateTablePin;
+    }
+
+    public String getPvtOwnerId() {
+        return pvtOwnerId;
+    }
+
+    public String getPvtExpiryDate() {
+        return pvtExpiryDate;
+    }
+}
+
+ ```
 
 ### Errors
 
