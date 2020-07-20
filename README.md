@@ -126,6 +126,9 @@ ext {
 -keep class com.pocket52.application.MODE {
 *;
 }
+-keep class com.pocket52.application.PrivateTableInfo {
+*;
+}
 
 -keepnames class com.badlogic.gdx.backends.android.AndroidInput*
 -keepclassmembers class com.badlogic.gdx.backends.android.AndroidInput* {
@@ -168,6 +171,7 @@ ext {
 -dontwarn com.crashlytics.android.answers.shim.**
 -dontwarn com.google.firebase.appindexing.**
 #endregion
+-keep class android.arch.** { *; }
 
 ```
 
