@@ -48,6 +48,8 @@ Include the following dependencies in your main app build.gradle file.
             force true
         }
         implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+        implementation "android.arch.lifecycle:extensions:1.1.1"
+        implementation "android.arch.lifecycle:viewmodel:1.1.1"
         implementation('io.socket:socket.io-client:0.8.3') {
             // excluding org.json which is provided by Android
             exclude group: 'org.json', module: 'json'
@@ -57,6 +59,7 @@ Include the following dependencies in your main app build.gradle file.
         implementation("com.android.support:design:$supportLibVersion") {
             force true
         }
+       
     }
    ```
    
