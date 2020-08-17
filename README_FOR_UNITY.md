@@ -1,6 +1,6 @@
 # Pocket52 Poker SDK Docs for Unity Plugin
 
-This Document contains POCKET 52’s POKER SDK’s Documentation.
+This Document contains POCKET 52’s POKER SDK’s Documentation with Unity Plugin.
 
 Please go to [Releases](https://github.com/pocket52/poker-app-sdk-release/releases) to be updated with the latest version of the client.
 
@@ -19,7 +19,7 @@ Please go to [Releases](https://github.com/pocket52/poker-app-sdk-release/releas
 
 
 
-## Dependencies 
+### Dependencies 
 
 Download and extract all the dependencies and insert them into Android folder. (Path:  Client-Project/Assets/Plugin/Android)
 
@@ -132,7 +132,7 @@ This will close Poker Rooms Activity, Game View Activity and call disposeToken()
 
 
 
-## Proguard Rules 
+### Proguard Rules 
 
 ```java
     
