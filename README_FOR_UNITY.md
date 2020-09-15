@@ -24,6 +24,7 @@ Please go to [Releases](https://github.com/pocket52/poker-app-sdk-release/releas
 
 Download and extract all the dependencies and insert them into Android folder. (Path:  Client-Project/Assets/Plugin/Android)
 
+Make sure App has multidex true option
 
 
 
@@ -55,13 +56,17 @@ Download and extract all the dependencies and insert them into Android folder. (
       AndroidJavaObject context = activity.Call<AndroidJavaObject>("getApplicationContext");
       
       //find auth token from API and share with SDK
-      string token = "user auth-token sample String";
+      string token = "player auth-token sample String";
+      
+      
+       //How to play URL (Ftue URL)
+       string ftueUrl = "vendor how-to-play Web URL";
       
       //Mode is an enum, for Stage/PP use TEST and for Production use PROD
       AndroidJavaObject mode = new AndroidJavaClass("com.pocket52.application.MODE").GetStatic<AndroidJavaObject>("TEST");
       
       //Initialization of Config Object
-      configObject = new AndroidJavaObject("com.pocket52.application.Config", context, token, mode, listener);
+      configObject = new AndroidJavaObject("com.pocket52.application.Config", context, token, mode, ftueUrl, listener);
       
       pokerObject.Call("init", configObject);
    
@@ -272,9 +277,7 @@ public class P52Poker {
 /**
  * {@code P52Poker SDK Config class, used for initialization}
  *
- * @author Name:    Romi Chandra,
  * Company: Nirdesa Networks Pvt Ltd,
- * Email:   romi@pocket52.com.
  * @version 1.0
  * @since 04, December, 2019
  */
@@ -316,12 +319,35 @@ public class Config {
     private PrivateTableInfo privateTableInfo;
 
 
+
+
+    /**
+     * @param context (Mandatory) Application Context
+     * @param authToken (Mandatory)
+     * @param mode (Mandatory) Mode to run on TEST/PROD servers
+     * @param pokerListener (Mandatory) to listen about Poker Activity
+     */
+    public Config(Context context, String authToken, MODE mode, IPokerListener pokerListener) {
+        this(context, authToken, mode, null, null, pokerListener);
+    }
+
     /**
      * @param context (Mandatory) Application Context
      * @param authToken (Mandatory)
      * @param mode (Mandatory) Mode to run on TEST/PROD servers
      * @param ftueUrl (Optional/Mandatory) Mandatory if we need to show FTUE from SDK
-     * @param assetsDirectoryName (Optional/Madatory) path Madatory if assets are not in SDK
+     * @param pokerListener (Mandatory) to listen about Poker Activity
+     */
+    public Config(Context context, String authToken, MODE mode, String ftueUrl, IPokerListener pokerListener) {
+        this(context, authToken, mode, ftueUrl, null, pokerListener);
+    }
+
+    /**
+     * @param context (Mandatory) Application Context
+     * @param authToken (Mandatory)
+     * @param mode (Mandatory) Mode to run on TEST/PROD servers
+     * @param ftueUrl (Optional/Mandatory) Mandatory if we need to show FTUE from SDK
+     * @param assetsDirectoryName (Mandatory)
      * @param pokerListener (Mandatory) to listen about Poker Activity
      */
     public Config(Context context, String authToken, MODE mode, String ftueUrl, String assetsDirectoryName, IPokerListener pokerListener) {
@@ -337,10 +363,19 @@ public class Config {
      * @param context (Mandatory) Application Context
      * @param authToken (Mandatory)
      * @param mode (Mandatory) Mode to run on TEST/PROD servers
+     * @param ftueUrl (Optional/Mandatory) Mandatory if we need to show FTUE from SDK
+     * @param assetsDirectoryName (Mandatory)
      * @param pokerListener (Mandatory) to listen about Poker Activity
+     * @param privateTableInfo (Optional/Mandatory) pass the private table Info to join the table
      */
-    public Config(Context context, String authToken, MODE mode, IPokerListener pokerListener) {
-        this(context, authToken, mode, null, null, pokerListener);
+    public Config(Context context, String authToken, MODE mode, String ftueUrl, String assetsDirectoryName, IPokerListener pokerListener, PrivateTableInfo privateTableInfo) {
+        this.context = context;
+        this.authToken = authToken;
+        this.mode = mode;
+        this.ftueUrl = ftueUrl;
+        this.pokerListener = pokerListener;
+        this.assetsDirectoryName = assetsDirectoryName;
+        this.privateTableInfo = privateTableInfo;
     }
 
     public Config (Config config) {
@@ -357,22 +392,13 @@ public class Config {
         return context;
     }
 
-    public void setContext(Context context) {
-        this.context = context;
-    }
-
     public MODE getMode() {
         return mode;
-    }
-
-    public void setMode(MODE mode) {
-        this.mode = mode;
     }
 
     public String getAuthToken() {
         return authToken;
     }
-
 
     public IPokerListener getPokerListener() {
         return pokerListener;
@@ -385,6 +411,11 @@ public class Config {
     public String getAssetsDirectoryName() {
         return assetsDirectoryName;
     }
+
+    public PrivateTableInfo getPrivateTableInfo() {
+        return privateTableInfo;
+    }
+    
 }
 
 ```
