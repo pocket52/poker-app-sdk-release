@@ -91,6 +91,36 @@ Make sure App has multidex true option
      public void onError(AndroidJavaObject error) {
      	Debug.Log("P52Poker  onError(): " );
      	Debug.Log("P52Poker  onError(): " + error.Call<string>("name") );
+	
+	
+     	string errorString = error.Call<string>("name");
+
+     	Debug.Log("P52Poker  errorString: " + errorString);
+
+  	if (string.Equals("INSUFFICIENT_BALANCE", errorString)) {
+            Debug.Log("Player has Low balance and redirect to Add_money_page");   
+            
+        } else if (string.Equals("INVALID_TOKEN" , errorString)){
+            Debug.Log("Invalid Pocket52 token");   
+            
+        } else if (string.Equals("INVALID_APPLICATION_CONTEXT" , errorString)){
+            Debug.Log("context should not be null");  
+            
+        } else if (string.Equals("INVALID_MODE" , errorString)) {
+            Debug.Log("Mode should be TEST or PROD only");   
+            
+        } else if (string.Equals("LOGGED_OUT" , errorString)) {
+            Debug.Log("Player is Fourcefully Logged-out from server");   
+            
+        } else if (string.Equals("EXIT_LOBBY" , errorString)) {
+           Debug.Log("Player is Exit the Lobby");   
+           
+        } else if (string.Equals("LOBBY_DESTROYED" , errorString)){
+            Debug.Log("Player's Lobby Destroyed, Close Poker rooms , P52Poker.get().closePokerRooms()");   
+            
+        } else if (string.Equals("IDLE_LOBBY" , errorString)){
+            Debug.Log("Loggedout the player due to idle state");   
+        }	
      }
 }
    
